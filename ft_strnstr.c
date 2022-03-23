@@ -6,7 +6,7 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 21:11:11 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/03/22 21:33:34 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/03/23 16:56:14 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	}
 	return (0);
 }
-
+/*
 int	main()
 {
 	char		*haystack;
@@ -55,3 +55,4 @@ int	main()
 	printf("%s", ft_strnstr(haystack, needle, len));
 	return (0);
 }
+*/

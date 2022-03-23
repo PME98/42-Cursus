@@ -1,50 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/22 21:56:07 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/03/23 16:45:07 by pedmurie@st      ###   ########.fr       */
+/*   Created: 2022/03/23 16:57:04 by pedmurie@st       #+#    #+#             */
+/*   Updated: 2022/03/23 17:07:44 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include<string.h>
 #include<stdlib.h>
 #include<stdio.h>
-#include<string.h>
 
-void	*ft_calloc(size_t count, size_t size)
+char	*ft_strdup(const char *s1)
 {
 	int		a;
-	char	*ptr;
+	char	*s2;
 
-	a = count * size;
-	if (a == 0)
-		return (0);
-	ptr = malloc(a);
-	memset(ptr, '\0', a);
-	return (ptr);
+	a = 0;
+	while (s1[a])
+		a++;
+	s2 = malloc(a);
+	a = 0;
+	while (s1[a])
+	{
+		s2[a] = s1[a];
+		a++;
+	}
+	return (s2);
 }
 /*
 int	main()
 {
-	size_t	count;
-	size_t	size;
-	int		a;
-	int		*ptr;
+	char	*s1;
 
-	count = 4;
-	size = 4;
-	a = 0;
-	ptr = ft_calloc(count, size);
-//	printf("%d\n", (int)calloc(count, size));
-	ft_calloc(count, size);
-	while (a <= 8)
-	{
-		printf("%d", ptr[a]);
-		a++;
-	}
+	s1 = "hola";
+	printf("%s\n", strdup(s1));
+	printf("%s", ft_strdup(s1));
 	return (0);
 }
 */
