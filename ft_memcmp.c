@@ -6,13 +6,13 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 19:52:52 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/03/22 21:30:30 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/03/23 17:59:02 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-int		memcmp(const void *s1, const void *s2, size_t n)
+int	memcmp(const void *s1, const void *s2, size_t n)
 {
 	size_t	i;
 

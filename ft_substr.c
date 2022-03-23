@@ -1,32 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/22 13:24:20 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/03/23 18:25:49 by pedmurie@st      ###   ########.fr       */
+/*   Created: 2022/03/23 17:15:17 by pedmurie@st       #+#    #+#             */
+/*   Updated: 2022/03/23 18:30:21 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
-{
-	unsigned int	a;
-	unsigned int	result;
+#include<stdlib.h>
+#include<stdio.h>
 
-	result = 0;
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	int			a;
+	char		*str;
+
 	a = 0;
-	while (src[a] && a < (size - 1))
+	str = malloc(len);
+	if (str == '\0')
+		return (NULL);
+	while (s[start])
 	{
-		dest[a] = src[a];
+		str[a] = s[start];
+		start++;
 		a++;
 	}
-	while (src[result] != '\0')
-	{
-		result++;
-	}
-	if (size)
-		dest[a] = '\0';
-	return (result);
+		str[a] = '\0';
+	return (str);
+}
+
+int		main()
+{
+	char			*s;
+	unsigned int	start;
+	size_t			len;
+
+	s = "hola amigos";
+	start = 3;
+	len = 9;
+	printf("%s", ft_substr(s, start, len));
+	return (0);
 }
