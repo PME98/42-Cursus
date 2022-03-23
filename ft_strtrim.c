@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/21 13:41:12 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/03/23 21:03:32 by pedmurie@st      ###   ########.fr       */
+/*   Created: 2022/03/23 18:58:45 by pedmurie@st       #+#    #+#             */
+/*   Updated: 2022/03/23 21:08:06 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdio.h>
-#include<string.h>
-#include<stdlib.h>
-
-void	*ft_memset(void *b, int c, size_t len);
-
-void	ft_bzero(void *s, size_t n)
+char *ft_strtrim(char const *s1, char const *set)
 {
-	if (n != 0)
-		ft_memset(s, '\0', n);
-}
+	int		b;
+	int		a;
 
-int	main()
-{
-	char 	*s;
-	size_t	n;
-
-	s = "holiwi amiwi";
-	n = 4;
-	bzero(s, n);
-	ft_bzero(s, n);
-	printf("%d", (int)s[7]);
-	return (0);
+	a = 0;
+	b = 0;
+	while (set[b])
+	{
+		if (s1[a] == set[b])
+		b++;
+	}
 }

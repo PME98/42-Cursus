@@ -6,7 +6,7 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 18:36:40 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/03/23 18:57:10 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/03/23 19:06:20 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 #include<stdlib.h>
 #include<stdio.h>
 
-char *ft_strjoin(char const *s1, char const *s2)
+size_t	ft_strlen(char *a);
+
+char	*ft_strjoin(char const *s1, char const *s2)
 {
 	int		a;
 	int		b;
@@ -22,17 +24,7 @@ char *ft_strjoin(char const *s1, char const *s2)
 
 	a = 0;
 	b = 0;
-	while (s1[a])
-	{
-		a++;
-	}
-	while (s2[b])
-	{
-		b++;
-	}
-	str = malloc(a + b - 1);
-	a = 0;
-	b = 0;
+	str = malloc(ft_strlen((char *)s1) + ft_strlen((char *)s2) - 1);
 	while (s1[b])
 	{
 		str[a] = s1[b];
@@ -49,7 +41,7 @@ char *ft_strjoin(char const *s1, char const *s2)
 	str[a] = '\0';
 	return (str);
 }
-/*
+
 int		main()
 {
 	char	*s1;
@@ -60,4 +52,3 @@ int		main()
 	printf("%s", ft_strjoin(s1, s2));
 	return (0);
 }
-*/
