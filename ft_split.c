@@ -1,23 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ft_strtrim.c                                    :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/23 20:22:11 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/03/23 20:42:49 by pedmurie@st      ###   ########.fr       */
+/*   Created: 2022/03/24 16:04:28 by pedmurie@st       #+#    #+#             */
+/*   Updated: 2022/03/24 16:05:18 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strtrim(char const *s1, char const *set)
+char	**ft_split(char const *s, char c)
 {
-	int	a;
-
-	a = 0;
-	while (s1[a])
-	{
-		
-	}
 	
 }

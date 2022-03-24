@@ -6,7 +6,7 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 18:36:40 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/03/23 19:06:20 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/03/24 16:53:20 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (str);
 }
 
-int		main()
+int	main(void)
 {
 	char	*s1;
 	char	*s2;
