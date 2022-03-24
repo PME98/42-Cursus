@@ -6,7 +6,7 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 18:58:45 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/03/24 16:42:04 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/03/24 22:08:35 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,44 +15,35 @@
 
 size_t			ft_strlen(char *a);
 
+char			*ft_strchr(const char *s, int c);
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int		b;
-	int		a;
+	int		start;
+	int		end;
 	char	*str;
-	int		c;
+	int		a;
 
+	start = 0;
 	a = 0;
-	c = 0;
-	str = malloc(ft_strlen((char *)s1));
-	if (str == '\0')
-		return (NULL);
-	while (s1[a])
+	end = ft_strlen((char *)s1) - 1;
+	str = malloc(end + 2);
+	while (s1[start] && ft_strchr(set, s1[start]))
+		start++;
+	while (s1[end] && ft_strchr(set, s1[end]) && end > start)
+		end--;
+	while (start <= end)
 	{
-		b = 0;
-		while (set[b])
-		{
-			while (s1[a] != set[b])
-				b++;
-			if (s1[a] == set[b])
-			{
-				a++;
-				str[c] = s1[a];
-				c++;
-			}			
-		}
+		str[a] = s1[start];
+		start++;
 	}
 	return (str);
 }
 
 int	main(void)
 {
-	char	*s1;
-	char	*set;
-	char	*str;
-
-	s1 = "ewvbadasa";
-	set = "aw";
-	printf("%s", ft_strtrim(s1, set));
+	ft_strtrim("abqbc", "abc");
+	printf("%s\n", ft_strtrim("abqbc", "abc"));
+	printf("%s\n", ft_strtrim("xavocadoyz", "xyz"));
 	return (0);
 }
