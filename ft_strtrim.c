@@ -6,7 +6,7 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 18:58:45 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/03/24 22:08:35 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/03/25 00:14:26 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,13 @@ char	*ft_strtrim(char const *s1, char const *set)
 	str = malloc(end + 2);
 	while (s1[start] && ft_strchr(set, s1[start]))
 		start++;
-	while (s1[end] && ft_strchr(set, s1[end]) && end > start)
+	while (s1[end] && ft_strchr(set, s1[end]) && end >= start)
 		end--;
 	while (start <= end)
 	{
 		str[a] = s1[start];
 		start++;
+		a++;
 	}
 	return (str);
 }

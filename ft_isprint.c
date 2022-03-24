@@ -6,7 +6,7 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:51:52 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/03/21 13:47:42 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/03/24 23:37:04 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,4 +16,3 @@ int	ft_isprint(int a)
 		return (1);
 	return (0);
 }
-strlen
