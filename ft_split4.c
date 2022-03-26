@@ -55,6 +55,7 @@ char	**ft_split(char const *s, char c)
 	t = 0;
 	cont = 0;
 	numptrs = ft_check_c(s, c);
+	printf("%d", numptrs);
 	end = ft_calloc(numptrs, sizeof(char *));
 	pos = 0;
 	while (t <= numptrs)
