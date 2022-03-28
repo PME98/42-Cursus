@@ -6,7 +6,7 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:24:20 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/03/28 21:47:32 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/03/28 22:35:45 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 
 	count = 0;
 	if (size == 0)
-		return (strlen(src));
+		return (ft_strlen(src));
 	while (src[count] != '\0')
 		++count;
 	i = 0;
