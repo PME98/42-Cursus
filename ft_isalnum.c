@@ -6,9 +6,11 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:42:30 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/03/21 13:47:27 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/03/28 14:32:01 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include"libft.h"
 
 int	ft_isalnum(int a)
 {

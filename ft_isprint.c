@@ -6,13 +6,15 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:51:52 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/03/24 23:37:04 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/03/28 16:15:55 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include"libft.h"
+
 int	ft_isprint(int a)
 {
-	if (a > 32 && a < 127)
+	if (a > 31 && a < 127)
 		return (1);
 	return (0);
 }

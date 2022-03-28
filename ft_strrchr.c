@@ -6,12 +6,11 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 16:56:21 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/03/22 21:55:19 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/03/28 16:09:18 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
+#include"libft.h"
 
 char	*ft_strrchr(const char *s, int c)
 {
@@ -33,7 +32,7 @@ char	*ft_strrchr(const char *s, int c)
 	return (NULL);
 }
 
-
+/*
 int main()
 {
    char *s = "Hola amigos";
@@ -46,3 +45,4 @@ int main()
 
    return 0;
 }
+*/

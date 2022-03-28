@@ -6,12 +6,11 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 14:21:27 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/03/24 21:08:40 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/03/28 16:48:34 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
+#include"libft.h"
 
 char	*ft_strchr(const char *s, int c)
 {
@@ -28,20 +27,7 @@ char	*ft_strchr(const char *s, int c)
 		}
 		a++;
 	}
+	if (c == '\0')
+		return (&str[a]);
 	return (NULL);
 }
-
-/*
-int main()
-{
-   char *s = "Hola amigos";
-   char c = 'a';
-
-   printf( "s=%s\n", s);
-   printf( "c=%c\n", c);
-   printf( "%s\n", strchr(s, c) );
-   printf( "%s", ft_strchr(s, c) );
-
-   return 0;
-}
-*/

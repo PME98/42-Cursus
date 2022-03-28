@@ -6,12 +6,11 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:32:09 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/03/26 15:04:51 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/03/28 14:32:34 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdio.h>
-#include<string.h>
+#include"libft.h"
 
 void	*ft_memset(void *b, int c, size_t len)
 {
@@ -27,16 +26,3 @@ void	*ft_memset(void *b, int c, size_t len)
 	}
 	return (b);
 }
-/*
-int main () {
-   char str[50];
-
-   strcpy(str,"This is string.h library function");
-   puts(str);
-
-   memset(str,'$',7);
-   ft_memset(str,'$',7);
-   puts(str);
-   
-   return(0);
-}*/

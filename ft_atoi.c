@@ -6,21 +6,20 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 19:29:51 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/03/24 12:27:05 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/03/28 20:59:58 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdio.h>
-#include<stdlib.h>
+#include"libft.h"
 
-int	ft_compnum(const char *str, int a, long int num, int signo)
+int	ft_compnum(const char *str, int a, unsigned int num, int signo)
 {
 	while (str[a] >= '0' && str[a] <= '9')
 	{
 		num = num * 10 + (str[a] - 48);
-		if (signo != 0 && num > 2147483648)
+		if (num > 2147483648 && signo != 0)
 			return (0);
-		else if (num > 2147483647)
+		else if (num > 2147483647 && signo == 0)
 			return (-1);
 		a++;
 	}
@@ -29,9 +28,9 @@ int	ft_compnum(const char *str, int a, long int num, int signo)
 
 int	ft_atoi(const char *str)
 {
-	int			a;
-	int			signo;
-	long int	num;
+	int				a;
+	int				signo;
+	unsigned int	num;
 
 	a = 0;
 	signo = 0;
@@ -49,12 +48,12 @@ int	ft_atoi(const char *str)
 		return (num * (-1));
 	return (num);
 }
-
-int		main(void)
+/*
+int	main()
 {
 	char	*str;
-	str = "	 -214754";
-	printf("%d \n", ft_atoi(str));
-	printf("%d \n", atoi(str));
-	return (0);
+	str = "	 -2147483649";
+	printf("MI ATOI = %d \n", ft_atoi(str));
+	printf("ATOI = %d \n", atoi(str));
 }
+*/

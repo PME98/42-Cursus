@@ -6,13 +6,11 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 21:11:11 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/03/23 18:01:40 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/03/28 22:09:34 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<string.h>
-#include<stdio.h>
-#include<xlocale.h>
+#include"libft.h"
 
 char	*ft_strnstr(const char *h, const char *needle, size_t len)
 {
@@ -30,12 +28,12 @@ char	*ft_strnstr(const char *h, const char *needle, size_t len)
 		if (h[a] == needle[b])
 		{
 			c = a;
-			while (needle[b] && needle[b] == h[c])
+			while (needle[b] && needle[b] == h[c] && a < len)
 			{
 				c++;
 				b++;
 			}
-			if (needle[b] == '\0')
+			if (needle[b - 1] == h[a])
 				return ((char *)&h[a]);
 		}
 		a++;
@@ -49,9 +47,10 @@ int	main()
 	char		*needle;
 	size_t		len;
 
-	len = 15;
-	h = "el otro día me fui a caminar";
-	needle = "dia";
+	h = "MZIRIaMZIRIBMZE123";
+	needle = "MZIRIBMZE123";
+	len = strlen(needle);
+	printf("%s\n", strnstr(h, needle, len));
 	printf("%s", ft_strnstr(h, needle, len));
 	return (0);
 }

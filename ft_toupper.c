@@ -6,11 +6,11 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:40:28 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/03/22 13:56:23 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/03/28 16:09:33 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdio.h>
+#include"libft.h"
 
 int	ft_toupper(int a)
 {
@@ -18,7 +18,7 @@ int	ft_toupper(int a)
 		a -= 32;
 	return (a);
 }
-
+/*
 int	main(void)
 {
 	int		letra;
@@ -27,3 +27,4 @@ int	main(void)
 	printf("%d", ft_toupper(letra));
 	return (0);
 }
+*/

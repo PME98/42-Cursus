@@ -6,9 +6,11 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:41:05 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/03/22 13:55:05 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/03/28 14:33:11 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include"libft.h"
 
 int	ft_tolower(int a)
 {

@@ -6,12 +6,11 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 17:17:16 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/03/22 18:47:45 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/03/28 16:56:32 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
+#include"libft.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
@@ -22,7 +21,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 		return (0);
 	while (i < (n - 1) && s1[i] && s2[i] && s1[i] == s2[i])
 		i++;
-	return (s1[i] - s2[i]);
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
 /*
 int 	main () 
@@ -37,13 +36,13 @@ int 	main ()
 
 	ret = strncmp(str1, str2, 4);
 	mio = ft_strncmp(str1, str2, 4);
-/*	if (ret < 0)
+	if (ret < 0)
    		printf("str1 is less than str2");
 	else if (ret > 0)
 		printf("str2 is less than str1");
 	else
 		printf("str1 is equal to str2");
-*//*
+
 	if (ret < 0)
    		printf("str1 is less than str2");
 	else if (ret > 0)

@@ -6,9 +6,11 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:39:36 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/03/21 13:47:30 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/03/28 16:08:48 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include"libft.h"
 
 int	ft_isalpha(int a)
 {

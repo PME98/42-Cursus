@@ -6,9 +6,11 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:46:16 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/03/21 13:47:35 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/03/28 14:32:07 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include"libft.h"
 
 int	ft_isascii(int a)
 {

@@ -6,12 +6,11 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 16:23:37 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/03/24 18:49:36 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/03/28 20:54:52 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdio.h>
-#include<stdlib.h>
+#include"libft.h"
 
 int	ft_digit(long int n)
 {
@@ -58,14 +57,4 @@ char	*ft_itoa(long int n)
 
 	a = ft_digit(n);
 	return (ft_mkstr(n, a));
-}
-
-int	main(void)
-{
-	int	n;
-
-	n = -2147483648;
-	printf("%d \n", n);
-	printf("%s \n", ft_itoa(n));
-	return (0);
 }
