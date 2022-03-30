@@ -6,7 +6,7 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 17:48:13 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/03/28 14:34:57 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/03/30 15:45:28 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int				ft_isalpha(int a);
 int				ft_isalpha(int a);
 int				ft_isalnum(int a);
 int				ft_isascii(int a);
+int				ft_isdigit(int a);
 int				ft_isprint(int a);
 size_t			ft_strlen(char *a);
 void			*ft_memset(void *b, int c, size_t len);
@@ -45,6 +46,6 @@ char			*ft_substr(char const *s, unsigned int start, size_t len);
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strtrim(char const *s1, char const *set);
 char			**ft_split(char const *s, char c);
-char			*ft_itoa(long int n);
+char			*ft_itoa(int n);
 
 #endif

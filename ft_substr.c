@@ -6,20 +6,19 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 17:15:17 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/03/30 12:52:35 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/03/30 14:31:52 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char
-	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	size_t	i;
 	size_t	j;
 	char	*str;
 
-	if (s == '\0' || len == 0)
+	if (s == '\0')
 		return (NULL);
 	i = 0;
 	j = 0;
@@ -36,9 +35,11 @@ char
 		i++;
 	}
 	str[j] = 0;
+	if (len == 0)
+		return (str);
 	return (str);
 }
-
+/*
 int	main(void)
 {
 	char			*s;
@@ -51,3 +52,4 @@ int	main(void)
 	printf("%s", ft_substr(s, start, len));
 	return (0);
 }
+*/

@@ -6,7 +6,7 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 11:44:30 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/03/30 14:09:35 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/03/30 14:21:40 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,27 +29,6 @@ int	ft_check_c(char const *s, char c)
 			find++;
 	}
 	return (find);
-}
-
-char	*ft_mkstr2(const char *s, char c, int inicio)
-{
-	char	*str;
-	int		a;
-
-	a = 0;
-	while (s[inicio + a] != c)
-		a++;
-	str = ft_calloc(a, sizeof(char));
-	if (str == '\0')
-		return (NULL);
-	a = 0;
-	while (s[inicio] != c && s[inicio])
-	{
-		str[a] = s[inicio];
-		inicio++;
-		a++;
-	}
-	return (str);
 }
 
 char	**ft_split(char const *s, char c)
@@ -75,7 +54,7 @@ char	**ft_split(char const *s, char c)
 			inicio = pos;
 			while (s[pos] != c && s[pos])
 				pos++;
-			end[t++] = ft_mkstr2(s, c, inicio);
+			end[t++] = ft_substr(s, inicio, pos - inicio);
 		}
 	}
 	return (end);

@@ -1,12 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/30 14:12:08 by pedmurie@st       #+#    #+#             */
+/*   Updated: 2022/03/30 17:11:06 by pedmurie@st      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include"libft.h"
 
-int	ft_digit(long int n)
+int	ft_digit(unsigned int n)
 {
 	int	a;
 
 	a = 1;
-	if (n < 0)
-		n *= -1;
 	while (n / 10 > 0)
 	{
 		n /= 10;
@@ -15,19 +25,26 @@ int	ft_digit(long int n)
 	return (a);
 }
 
-char	*ft_mkstr(long int n, int a)
+char	*ft_mkstr(unsigned int n, int a, int w)
 {
-	char	*ptr;
-	int		cpy;
+	char			*ptr;
+	int				cpy;
 
-	cpy = n;
-	ptr = ft_calloc(a + 1, sizeof(char));
-	if (!ptr)
-		return (NULL);
-	if (n >= 0)
+	cpy = w;
+	if (w >= 0)
+	{
+		ptr = ft_calloc(a + 1, sizeof(char));
+		if (!ptr)
+			return (NULL);
 		a--;
+	}
 	else
-		n *= -1;
+	{
+		ptr = ft_calloc(a + 2, sizeof(char));
+		if (!ptr)
+			return (NULL);
+		w *= -1;
+	}
 	while (a >= 0)
 	{
 		ptr[a] = n % 10 + 48;
@@ -39,20 +56,22 @@ char	*ft_mkstr(long int n, int a)
 	return (ptr);
 }
 
-char	*ft_itoa(long int n)
+char	*ft_itoa(int n)
 {
-	int		a;
+	int				a;
+	unsigned int	j;
 
-	if (n < -2147483648 || n > 2147483647)
-		return (NULL);
-	if (n == -2147483648)
-		return ("-2147483648");
-	a = ft_digit(n);
-	return (ft_mkstr(n, a));
+	if (n < 0)
+		j = -n;
+	else
+		j = n;
+	a = ft_digit(j);
+	return (ft_mkstr(j, a, n));
 }
-/*
+
 int	main(void)
 {
-	printf("%s", ft_itoa(125464));
+	printf("%s", ft_itoa(-214743648));
 	return (0);
-}*/
+}
+
