@@ -6,7 +6,7 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 21:56:07 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/03/28 18:17:30 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/03/30 14:01:02 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ void	*ft_calloc(size_t count, size_t size)
 	ptr = malloc(a);
 	if (!ptr)
 		return (NULL);
-	memset(ptr, '\0', a);
+	ft_memset(ptr, '\0', a);
 	return (ptr);
 }

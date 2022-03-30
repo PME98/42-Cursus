@@ -6,18 +6,18 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 11:44:30 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/03/28 21:30:27 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/03/30 14:09:35 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"libft.h"
 
-void	*ft_calloc(size_t count, size_t size);
-
 int	ft_check_c(char const *s, char c)
 {
-	int		find;
+	int	find;
 
+	if (!s)
+		return ('\0');
 	find = 0;
 	while (*s)
 	{
@@ -25,7 +25,7 @@ int	ft_check_c(char const *s, char c)
 			s++;
 		while (*s != c && *s)
 			s++;
-		if (*s - 1 != c)
+		if (*(s - 1) != c)
 			find++;
 	}
 	return (find);
@@ -63,7 +63,7 @@ char	**ft_split(char const *s, char c)
 	t = 0;
 	numptrs = ft_check_c(s, c);
 	end = ft_calloc(numptrs + 1, sizeof(char *));
-	if (end == '\0')
+	if (!end)
 		return (NULL);
 	pos = 0;
 	while (t < numptrs)
@@ -79,16 +79,18 @@ char	**ft_split(char const *s, char c)
 		}
 	}
 	return (end);
-}/*
-	int main ()
+}
+/*
+int	main(void)
 {
 	char	*s;
 	char	c;
 	char	**a;
 	int		b;
+
 	s = " luis   se  toma  un batido";
-	c = '\0';
-	a = ft_split(s, c);
+	c = ' ';
+	ft_split(s, c);
 	b = 0;
 	while (a[b])
 	{

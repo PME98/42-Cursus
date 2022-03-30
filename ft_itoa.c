@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/24 16:23:37 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/03/28 20:54:52 by pedmurie@st      ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include"libft.h"
 
 int	ft_digit(long int n)
@@ -33,7 +21,7 @@ char	*ft_mkstr(long int n, int a)
 	int		cpy;
 
 	cpy = n;
-	ptr = malloc(a);
+	ptr = ft_calloc(a + 1, sizeof(char));
 	if (!ptr)
 		return (NULL);
 	if (n >= 0)
@@ -55,6 +43,16 @@ char	*ft_itoa(long int n)
 {
 	int		a;
 
+	if (n < -2147483648 || n > 2147483647)
+		return (NULL);
+	if (n == -2147483648)
+		return ("-2147483648");
 	a = ft_digit(n);
 	return (ft_mkstr(n, a));
 }
+/*
+int	main(void)
+{
+	printf("%s", ft_itoa(125464));
+	return (0);
+}*/

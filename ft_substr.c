@@ -6,40 +6,48 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 17:15:17 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/03/28 21:39:50 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/03/30 12:52:35 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char
+	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	int			a;
-	char		*str;
+	size_t	i;
+	size_t	j;
+	char	*str;
 
-	a = 0;
-	str = ft_calloc(len + 1, sizeof(char));
-	if (str == '\0')
+	if (s == '\0' || len == 0)
 		return (NULL);
-	while (s[start] && a < (int)len)
+	i = 0;
+	j = 0;
+	str = ft_calloc(len + 1, sizeof(char));
+	if (!str)
+		return (NULL);
+	while (s[i])
 	{
-		str[a] = s[start];
-		start++;
-		a++;
+		if (i >= start && j < len)
+		{
+			str[j] = s[i];
+			j++;
+		}
+		i++;
 	}
-		str[a] = '\0';
+	str[j] = 0;
 	return (str);
 }
-/*
-int		main()
+
+int	main(void)
 {
 	char			*s;
 	unsigned int	start;
 	size_t			len;
 
 	s = "hola amigos";
-	start = 3;
-	len = 9;
+	start = 6;
+	len = 4;
 	printf("%s", ft_substr(s, start, len));
 	return (0);
-}*/
+}
