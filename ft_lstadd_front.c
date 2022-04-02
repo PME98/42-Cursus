@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/21 12:08:45 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/04/02 17:44:14 by pedmurie@st      ###   ########.fr       */
+/*   Created: 2022/04/02 17:19:00 by pedmurie@st       #+#    #+#             */
+/*   Updated: 2022/04/02 18:05:02 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
-size_t	ft_strlen(const char *a)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	size_t	cont;
-
-	cont = 0;
-	while (a[cont])
-		cont++;
-	return (cont);
+	new->next = *lst;
+	*lst = new;
 }

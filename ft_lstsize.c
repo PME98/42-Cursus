@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/21 12:08:45 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/04/02 17:44:14 by pedmurie@st      ###   ########.fr       */
+/*   Created: 2022/04/02 18:07:05 by pedmurie@st       #+#    #+#             */
+/*   Updated: 2022/04/02 18:29:42 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
-size_t	ft_strlen(const char *a)
+int	ft_lstsize(t_list *lst)
 {
-	size_t	cont;
+	int	a;
 
-	cont = 0;
-	while (a[cont])
-		cont++;
-	return (cont);
+	if (!lst)
+		return ('\0');
+	a = 1;
+	while (lst->next != NULL)
+	{
+		a++;
+		lst = lst->next;
+	}
+	return (a);
 }

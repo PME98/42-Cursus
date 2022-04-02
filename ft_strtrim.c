@@ -6,7 +6,7 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 18:58:45 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/03/28 22:42:17 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/04/02 19:16:20 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 /*
 int	main(void)
 {
+	printf("%s\n", ft_strtrim("jhljghola que tal hola", "hola"));
 	printf("%s\n", ft_strtrim("abqbc", "abc"));
 	printf("%s\n", ft_strtrim("xavocadoyz", "xyz"));
 	return (0);
