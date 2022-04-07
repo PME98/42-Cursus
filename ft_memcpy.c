@@ -6,7 +6,7 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 14:59:13 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/03/28 16:42:47 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/04/07 14:16:53 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,18 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	size_t		a;
 	char		*d;
-	char		*o;
+	char		*s;
 
 	a = 0;
 	d = (char *)dst;
-	o = (char *)src;
+	s = (char *)src;
 	if ((dst == src) || n == 0)
 		return (dst);
 	if (!dst && !src)
 		return (0);
 	while (a < n)
 	{
-		d[a] = o[a];
+		d[a] = s[a];
 		a++;
 	}
 	return (dst);

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/07 19:07:42 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/04/07 19:22:19 by pedmurie@st      ###   ########.fr       */
+/*   Created: 2022/04/07 19:13:26 by pedmurie@st       #+#    #+#             */
+/*   Updated: 2022/04/07 19:14:31 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,19 @@ int	ft_check_c(char const *s, char c)
 	return (find);
 }
 
-char	**ft_make(int numptrs, char **end, char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
-	int	pos;
-	int	inicio;
-	int	t;
+	char	**end;
+	int		t;
+	int		numptrs;
+	int		pos;
+	int		inicio;
 
 	t = 0;
+	numptrs = ft_check_c(s, c);
+	end = ft_calloc(numptrs + 1, sizeof(char *));
+	if (!end)
+		return (NULL);
 	pos = 0;
 	while (t < numptrs)
 	{
@@ -49,26 +55,8 @@ char	**ft_make(int numptrs, char **end, char const *s, char c)
 			while (s[pos] != c && s[pos])
 				pos++;
 			end[t++] = ft_substr(s, inicio, pos - inicio);
-			if (!end[t - 1])
-			{
-				while (t >= 0)
-					free (end[t--]);
-			}
 		}
 	}
-	return (end);
-}
-
-char	**ft_split(char const *s, char c)
-{
-	char	**end;
-	int		numptrs;
-
-	numptrs = ft_check_c(s, c);
-	end = ft_calloc(numptrs + 1, sizeof(char *));
-	if (!end)
-		return (NULL);
-	end = ft_make(numptrs, end, s, c);
 	return (end);
 }
 
