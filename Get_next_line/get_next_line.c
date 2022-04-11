@@ -28,10 +28,26 @@ static char	*ft_readline(char *line)
 char	*get_next_line(int fd)
 {
 	static char	*line;
-
+	int		lsize;
+	char		*leido;
+	int		inicio;
+	
 	if (!fd)
 		return (NULL);
-	line = ft_readline(line);
-	if (!line)
-		return (NULL);
+	
+	line = malloc(BUFFER_SIZE);
+	inicio = 0;
+	leido = malloc(1);
+	
+	while (leido != "\n" || inicio != BUFFER_SIZE) 
+	{
+		if (!line || lsize <= 0)
+			return (NULL);
+	
+		lsize = read(fd, leido, 1);
+		line[inicio] = leido;
+		inicio ++;
+	}
+	return line;
 }
+
