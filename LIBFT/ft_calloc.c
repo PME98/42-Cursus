@@ -6,7 +6,7 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 21:56:07 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/03/30 14:01:02 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/04/09 14:00:36 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	*ft_calloc(size_t count, size_t size)
 	char	*ptr;
 
 	a = count * size;
+	if (size >= SIZE_MAX || count >= SIZE_MAX)
+		return (NULL);
 	ptr = malloc(a);
 	if (!ptr)
 		return (NULL);

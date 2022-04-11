@@ -6,7 +6,7 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 19:29:51 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/03/28 20:59:58 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/04/09 13:07:03 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	ft_atoi(const char *str)
 int	main()
 {
 	char	*str;
-	str = "	 -2147483649";
+	str = "	 59595959595";
 	printf("MI ATOI = %d \n", ft_atoi(str));
 	printf("ATOI = %d \n", atoi(str));
 }

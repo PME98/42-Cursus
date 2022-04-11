@@ -6,7 +6,7 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 21:11:11 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/04/02 12:25:34 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/04/09 14:24:21 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	j = 0;
 	if (needle[0] == '\0')
 		return ((char *)haystack);
+	if (len > ft_strlen(haystack))
+		len = ft_strlen(haystack);
 	while (j < len && haystack[j])
 	{
 		i = 0;
-		while (needle[i] && haystack[j] && needle[i] == haystack[j] && j < len)
-		{
+		while (needle[i] && haystack[j + i]
+			&& needle[i] == haystack[j + i] && j + i < len)
 			i++;
-			j++;
-		}
 		if (needle[i] == '\0')
-			return ((char *)&haystack[j - i]);
+			return ((char *)&haystack[j]);
 		j++;
 	}
 	return (0);
@@ -41,9 +41,9 @@ int	main(void)
 	char		*needle;
 	size_t		len;
 
-	h = "lorem ipsum dolor sit amet";
-	needle = "dolor";
-	len = 20;
+	h = "aaabcabcd";
+	needle = "aabc";
+	len = 35;
 	printf("%s\n", strnstr(h, needle, len));
 	printf("%s", ft_strnstr(h, needle, len));
 	return (0);

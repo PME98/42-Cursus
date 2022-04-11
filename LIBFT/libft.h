@@ -6,7 +6,7 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 17:48:13 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/04/07 16:58:44 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/04/09 13:55:50 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include<stdlib.h>
 # include<string.h>
 # include<ctype.h>
+# include<limits.h>
 
 typedef struct s_list
 {
@@ -35,7 +36,7 @@ void			*ft_memset(void *b, int c, size_t len);
 void			ft_bzero(void *s, size_t n);
 void			*ft_memcpy(void *dst, const void *src, size_t n);
 void			*ft_memmove(void *dst, const void *src, size_t len);
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size);
+size_t			ft_strlcpy(char *dest, const char *src, unsigned int size);
 size_t			ft_strlcat(char *dest, const char *src, size_t size);
 int				ft_toupper(int a);
 int				ft_tolower(int a);

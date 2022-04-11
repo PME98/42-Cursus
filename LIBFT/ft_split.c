@@ -6,7 +6,7 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 19:07:42 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/04/07 19:22:19 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/04/07 19:33:33 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ char	**ft_split(char const *s, char c)
 	end = ft_make(numptrs, end, s, c);
 	return (end);
 }
-
+/*
 int	main(void)
 {
 	char	*s;
@@ -90,3 +90,4 @@ int	main(void)
 	}
 	return (0);
 }
+*/
