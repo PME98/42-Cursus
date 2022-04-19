@@ -6,7 +6,7 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 12:09:20 by pedmurie          #+#    #+#             */
-/*   Updated: 2022/04/18 19:58:34 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/04/19 19:10:01 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_strchr(const char *s, int c)
 	while (str[a])
 	{
 		if (str[a] == (char)c)
-			return (a);
+			return (a + 1);
 		a++;
 	}
 	return ('\0');
@@ -106,33 +106,43 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 char	*get_next_line(int fd)
 {
-	char	*line;
-	int		length;
-	int		finish;
-	char	*myline;
-	int		b;
+	char		*line;
+	int			length;
+	static int	finish;
+	char		*myline;
+	static int	start;
 
-	b = 0;
-	if (!fd)
+	start = finish + start;
+//	printf("s=%d	", start);
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	length = read(fd, line, BUFFER_SIZE);
-	finish = ft_strchr(line, '\n');
-	return (ft_substr(line, b, finish + 1));
+//	if (length >= BUFFER_SIZE)
+//		pread(fd, line, BUFFER_SIZE, finish);*/
+	finish = ft_strchr(&line[start], '\n');
+//	printf ("f=%d	", finish);
+	myline = ft_substr(line, start, finish);
+	return (myline);
 }
 
 int	main(int argc, char **argv)
 {
-	int		fd2;
+	int		fd;
+	char	*s;
 
-	fd2 = open("test2", O_RDONLY);
-	printf("BUFFER_SIZE=%d\n", BUFFER_SIZE);
-	printf("%s", get_next_line(fd2));
-/*	printf("%s", get_next_line(fd2));
-	printf("%s", get_next_line(fd2));
-	printf("%s", get_next_line(fd2));
-	printf("%s", get_next_line(fd2));
-	printf("%s", get_next_line(fd2));
-	printf("%s", get_next_line(fd2));*/
-//	get_next_line(fd2);
-	close(fd2);
+	fd = open("test2", O_RDONLY);
+//	printf("BUFFER_SIZE=%d\n", BUFFER_SIZE);
+	s = get_next_line(fd);
+	printf("%s", s);
+	s = get_next_line(fd);
+	printf("%s", s);
+	s = get_next_line(fd);
+	printf("%s", s);
+	s = get_next_line(fd);
+	printf("%s", s);
+	s = get_next_line(fd);
+	printf("%s", s);
+	s = get_next_line(fd);
+	printf("%s", s);
+	close(fd);
 }
