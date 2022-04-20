@@ -5,12 +5,10 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/11 12:09:20 by pedmurie          #+#    #+#             */
-/*   Updated: 2022/04/19 19:10:01 by pedmurie@st      ###   ########.fr       */
+/*   Created: 2022/04/12 18:01:42 by pedmurie@st       #+#    #+#             */
+/*   Updated: 2022/04/20 20:36:59 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-//#include "get_next_line.h"
 
 #include<stdlib.h>
 #include<sys/types.h>
@@ -18,32 +16,6 @@
 #include<unistd.h>
 #include<stdio.h>
 #include<fcntl.h>
-
-int	ft_strchr(const char *s, int c)
-{
-	int		a;
-	char	*str;
-
-	a = 0;
-	str = (char *)s;
-	while (str[a])
-	{
-		if (str[a] == (char)c)
-			return (a + 1);
-		a++;
-	}
-	return ('\0');
-}
-
-size_t	ft_strlen(const char *a)
-{
-	size_t	cont;
-
-	cont = 0;
-	while (a[cont])
-		cont++;
-	return (cont);
-}
 
 void	*ft_memset(void *b, int c, size_t len)
 {
@@ -75,54 +47,31 @@ void	*ft_calloc(size_t count, size_t size)
 	return (ptr);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	size_t	i;
-	size_t	j;
-	char	*str;
-
-	if (s == '\0')
-		return (NULL);
-	if (len > ft_strlen(s))
-		len = ft_strlen(s);
-	i = 0;
-	j = 0;
-	str = ft_calloc(len + 1, sizeof(char));
-	if (!str)
-		return (NULL);
-	while (s[i])
-	{
-		if (i >= start && j < len)
-		{
-			str[j] = s[i];
-			j++;
-		}
-		i++;
-	}
-	if (len == 0)
-		return (str);
-	return (str);
-}
-
 char	*get_next_line(int fd)
 {
 	char		*line;
-	int			length;
-	static int	finish;
+	int			finish;
+	char		*linetore;
 	char		*myline;
-	static int	start;
+	int			a;
 
-	start = finish + start;
-//	printf("s=%d	", start);
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (!fd)
 		return (NULL);
-	length = read(fd, line, BUFFER_SIZE);
-//	if (length >= BUFFER_SIZE)
-//		pread(fd, line, BUFFER_SIZE, finish);*/
-	finish = ft_strchr(&line[start], '\n');
-//	printf ("f=%d	", finish);
-	myline = ft_substr(line, start, finish);
-	return (myline);
+	finish = 0;
+	myline = ft_calloc(BUFFER_SIZE, 1);
+	while (a <= BUFFER_SIZE)
+	{
+		a = a + read(fd, line, 1);
+		myline[finish] = line[0];
+		if (line[0] == '\n')
+		{
+			linetore = myline;
+			free(myline);
+			return (linetore);
+		}
+		finish++;
+	}
+	return (NULL);
 }
 
 int	main(int argc, char **argv)
@@ -131,18 +80,14 @@ int	main(int argc, char **argv)
 	char	*s;
 
 	fd = open("test2", O_RDONLY);
-//	printf("BUFFER_SIZE=%d\n", BUFFER_SIZE);
+	printf("BUFFER_SIZE=%d\n", BUFFER_SIZE);
 	s = get_next_line(fd);
-	printf("%s", s);
+	printf("1=%s", s);
 	s = get_next_line(fd);
-	printf("%s", s);
+	printf("2=%s", s);
 	s = get_next_line(fd);
-	printf("%s", s);
+	printf("3=%s", s);
 	s = get_next_line(fd);
-	printf("%s", s);
-	s = get_next_line(fd);
-	printf("%s", s);
-	s = get_next_line(fd);
-	printf("%s", s);
+	printf("4=%s", s);
 	close(fd);
 }
