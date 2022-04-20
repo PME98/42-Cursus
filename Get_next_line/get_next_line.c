@@ -6,7 +6,7 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 18:01:42 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/04/20 20:36:59 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/04/20 20:49:11 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,16 @@
 #include<unistd.h>
 #include<stdio.h>
 #include<fcntl.h>
+
+size_t	ft_strlen(const char *a)
+{
+	size_t	cont;
+
+	cont = 0;
+	while (a[cont])
+		cont++;
+	return (cont);
+}
 
 void	*ft_memset(void *b, int c, size_t len)
 {
@@ -47,6 +57,27 @@ void	*ft_calloc(size_t count, size_t size)
 	return (ptr);
 }
 
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	int		a;
+	int		b;
+	char	*str;
+
+	a = 0;
+	b = 0;
+	if (!s1 || !s2)
+		return (NULL);
+	str = ft_calloc(ft_strlen((char *)s1) + ft_strlen((char *)s2) + 1, 1);
+	if (str == '\0')
+		return (NULL);
+	while (s1[b])
+		str[a++] = s1[b++];
+	b = 0;
+	while (s2[b])
+		str[a++] = s2[b++];
+	return (str);
+}
+
 char	*get_next_line(int fd)
 {
 	char		*line;
@@ -71,6 +102,8 @@ char	*get_next_line(int fd)
 		}
 		finish++;
 	}
+	if (a > BUFFER_SIZE)
+		myline = ft_strjoin(myline);
 	return (NULL);
 }
 
