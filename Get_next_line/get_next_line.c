@@ -6,7 +6,7 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 13:20:27 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/04/21 18:04:17 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/04/21 20:00:48 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ char	*ft_readfile(int fd, char *file)
 	char	*mem;
 	int		a;
 
-	mem = malloc((BUFFER_SIZE + 1) * sizeof(char));
+	mem = malloc(BUFFER_SIZE + 1);
 	if (!mem)
 		return (NULL);
 	a = 1;
