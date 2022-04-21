@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/12 18:01:42 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/04/20 20:49:11 by pedmurie@st      ###   ########.fr       */
+/*   Created: 2022/04/21 13:20:27 by pedmurie@st       #+#    #+#             */
+/*   Updated: 2022/04/21 18:04:17 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,94 +17,98 @@
 #include<stdio.h>
 #include<fcntl.h>
 
-size_t	ft_strlen(const char *a)
-{
-	size_t	cont;
+#include "get_next_line.h"
 
-	cont = 0;
-	while (a[cont])
-		cont++;
-	return (cont);
-}
-
-void	*ft_memset(void *b, int c, size_t len)
-{
-	size_t	a;
-	char	*str;
-
-	str = (char *)b;
-	a = 0;
-	while (a < len)
-	{	
-		str[a] = (char)c;
-		a++;
-	}
-	return (b);
-}
-
-void	*ft_calloc(size_t count, size_t size)
-{
-	int		a;
-	char	*ptr;
-
-	a = count * size;
-	if (size >= SIZE_MAX || count >= SIZE_MAX)
-		return (NULL);
-	ptr = malloc(a);
-	if (!ptr)
-		return (NULL);
-	ft_memset(ptr, '\0', a);
-	return (ptr);
-}
-
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_next(char *file)
 {
 	int		a;
 	int		b;
 	char	*str;
 
 	a = 0;
-	b = 0;
-	if (!s1 || !s2)
+	while (file[a] && file[a] != '\n')
+		a++;
+	if (!file[a])
+	{
+		free(file);
 		return (NULL);
-	str = ft_calloc(ft_strlen((char *)s1) + ft_strlen((char *)s2) + 1, 1);
-	if (str == '\0')
+	}
+	str = malloc(ft_strlen(file) - ++a);
+	if (!str)
 		return (NULL);
-	while (s1[b])
-		str[a++] = s1[b++];
 	b = 0;
-	while (s2[b])
-		str[a++] = s2[b++];
+	while (file[a])
+		str[b++] = file[a++];
+	str[b] = '\0';
+	free(file);
 	return (str);
+}
+
+char	*ft_makeline(char *file)
+{
+	int		a;
+	char	*str;
+
+	a = 0;
+	if (!file)
+		return (NULL);
+	while (file[a] && file[a] != '\n')
+		a++;
+	str = malloc(a + 2);
+	if (!str)
+		return (NULL);
+	a = 0;
+	while (file[a] && file[a] != '\n')
+	{
+		str[a] = file[a];
+		a++;
+	}
+	if (file[a] == '\n')
+	{
+		str[a] = file[a];
+		a++;
+	}
+	str[a] = '\0';
+	return (str);
+}
+
+char	*ft_readfile(int fd, char *file)
+{
+	char	*mem;
+	int		a;
+
+	mem = malloc((BUFFER_SIZE + 1) * sizeof(char));
+	if (!mem)
+		return (NULL);
+	a = 1;
+	while (!ft_strchr(file, '\n') && a != 0)
+	{
+		a = read(fd, mem, BUFFER_SIZE);
+		if (a == -1)
+		{
+			free(mem);
+			return (NULL);
+		}
+		mem[a] = '\0';
+		file = ft_strjoin(file, mem);
+	}
+	free(mem);
+	return (file);
 }
 
 char	*get_next_line(int fd)
 {
-	char		*line;
-	int			finish;
-	char		*linetore;
-	char		*myline;
-	int			a;
+	static char		*file;
+	char			*line;
 
-	if (!fd)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	finish = 0;
-	myline = ft_calloc(BUFFER_SIZE, 1);
-	while (a <= BUFFER_SIZE)
-	{
-		a = a + read(fd, line, 1);
-		myline[finish] = line[0];
-		if (line[0] == '\n')
-		{
-			linetore = myline;
-			free(myline);
-			return (linetore);
-		}
-		finish++;
-	}
-	if (a > BUFFER_SIZE)
-		myline = ft_strjoin(myline);
-	return (NULL);
+	file = ft_readfile(fd, file);
+	if (!file)
+		return (NULL);
+	line = ft_makeline(file);
+	file = ft_next(file);
+	return (line);
 }
 
 int	main(int argc, char **argv)

@@ -6,7 +6,7 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 13:45:04 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/04/11 13:50:17 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/04/21 17:07:51 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,12 @@
 # include <sys/uio.h>
 # include <unistd.h>
 
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-size_t	ft_strlen(const char *a);
-void	*ft_calloc(size_t count, size_t size);
-void	*ft_memset(void *b, int c, size_t len);
+size_t			ft_strlen(char *str);
+char			*ft_strchr(char *s, int c);
+char			*ft_strjoin(char *s1, char *s2);
+char			*get_next_line(int fd);
+char			*ft_get_line(char *save);
+char			*ft_save(char *save);
+char			*ft_read_and_save(int fd, char *save);
 
 #endif
