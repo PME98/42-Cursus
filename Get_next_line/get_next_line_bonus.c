@@ -93,7 +93,7 @@ char	*ft_readfile(int fd, char *file)
 
 char	*get_next_line(int fd)
 {
-	static char		*file[MAX_FD];
+	static char		*file[1024];
 	char			*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
