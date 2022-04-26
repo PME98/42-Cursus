@@ -6,16 +6,9 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 13:20:27 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/04/21 20:00:48 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/04/26 15:59:23 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include<stdlib.h>
-#include<sys/types.h>
-#include<sys/uio.h>
-#include<unistd.h>
-#include<stdio.h>
-#include<fcntl.h>
 
 #include "get_next_line.h"
 
@@ -81,7 +74,7 @@ char	*ft_readfile(int fd, char *file)
 	if (!mem)
 		return (NULL);
 	a = 1;
-	while (!ft_strchr(file, '\n') && a != 0)
+	while (a != 0)
 	{
 		a = read(fd, mem, BUFFER_SIZE);
 		if (a == -1)
@@ -91,6 +84,8 @@ char	*ft_readfile(int fd, char *file)
 		}
 		mem[a] = '\0';
 		file = ft_strjoin(file, mem);
+		if (ft_strchr(file, '\n'))
+			break ;
 	}
 	free(mem);
 	return (file);
@@ -108,9 +103,14 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line = ft_makeline(file);
 	file = ft_next(file);
+	if (ft_strlen(line) == 0)
+	{	
+		free(line);
+		return (NULL);
+	}
 	return (line);
 }
-
+/*
 int	main(int argc, char **argv)
 {
 	int		fd;
@@ -119,12 +119,29 @@ int	main(int argc, char **argv)
 	fd = open("test2", O_RDONLY);
 	printf("BUFFER_SIZE=%d\n", BUFFER_SIZE);
 	s = get_next_line(fd);
-	printf("1=%s", s);
+	printf("%s", s);
 	s = get_next_line(fd);
-	printf("2=%s", s);
+	printf("%s", s);
 	s = get_next_line(fd);
-	printf("3=%s", s);
+	printf("%s", s);
 	s = get_next_line(fd);
-	printf("4=%s", s);
+	printf("%s", s);
+	s = get_next_line(fd);
+	printf("%s", s);
+	s = get_next_line(fd);
+	printf("%s", s);
+	s = get_next_line(fd);
+	printf("%s", s);
+	s = get_next_line(fd);
+	printf("%s", s);
+	s = get_next_line(fd);
+	printf("%s", s);
+	s = get_next_line(fd);
+	printf("%s", s);
+	s = get_next_line(fd);
+	printf("%s", s);
+	s = get_next_line(fd);
+	printf("%s", s);
 	close(fd);
 }
+*/
