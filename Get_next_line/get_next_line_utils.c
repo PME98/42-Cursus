@@ -3,69 +3,81 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
+/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/11 13:44:07 by pedmurie@st       #+#    #+#             */
-/*   Updated: 2022/04/26 16:02:40 by pedmurie@st      ###   ########.fr       */
+/*   Created: 2022/04/11 13:14:50 by cagonzal          #+#    #+#             */
+/*   Updated: 2022/04/11 15:42:06 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(char *str)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	c;
+	int		sizetotal;
+	char	*res;
+	int		i;
+	int		j;
 
-	c = 0;
-	if (!str)
-		return (0);
-	while (str[c] != '\0')
-		c++;
-	return (c);
+	i = 0;
+	sizetotal = ft_strlen(s1) + ft_strlen(s2);
+	res = ft_calloc(sizeof(char), sizetotal + 1);
+	if (!res || !s1 || !s2)
+		return (NULL);
+	while (s1[i] != 0)
+	{
+		res[i] = s1[i];
+		i++;
+	}
+	j = 0;
+	while (s2[j] != 0)
+		res[i++] = s2[j++];
+	res[sizetotal] = 0;
+	return (res);
 }
 
-char	*ft_strchr(char *s, int c)
+char	*ft_strchr(const char *str, int c)
+{
+	char	*ptr;
+
+	ptr = (char *)str;
+	while (*ptr != c && *ptr != 0)
+		ptr++;
+	if (*ptr == c)
+		return (ptr);
+	else
+		return (NULL);
+}
+
+void	ft_bzero(void *s, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < n)
+	{
+		((unsigned char *)s)[i] = '\0';
+		i++;
+	}
+}
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	void	*ptr;
+
+	ptr = malloc(count * size);
+	if (ptr == NULL)
+		return (NULL);
+	ft_bzero(ptr, count * size);
+	return (ptr);
+}
+
+size_t	ft_strlen(const char *str)
 {
 	int	i;
 
 	i = 0;
-	if (!s)
-		return (0);
-	if (c == '\0')
-		return ((char *)&s[ft_strlen(s)]);
-	while (s[i] != '\0')
-	{
-		if (s[i] == (char) c)
-			return ((char *)&s[i]);
+	while (str[i])
 		i++;
-	}
-	return (0);
-}
-
-char	*ft_strjoin(char *s1, char *s2)
-{
-	size_t	i;
-	size_t	c;
-	char	*str;
-
-	if (!s1)
-	{
-		s1 = (char *)malloc(1 * sizeof(char));
-		s1[0] = '\0';
-	}
-	if (!s1 || !s2)
-		return (NULL);
-	str = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
-	if (str == NULL)
-		return (NULL);
-	i = -1;
-	c = 0;
-	if (s1)
-		while (s1[++i] != '\0')
-			str[i] = s1[i];
-	while (s2[c] != '\0')
-		str[i++] = s2[c++];
-	str[ft_strlen(s1) + ft_strlen(s2)] = '\0';
-	free(s1);
-	return (str);
+	return (i);
 }
