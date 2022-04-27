@@ -6,11 +6,20 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 10:31:26 by cagonzal          #+#    #+#             */
-/*   Updated: 2022/04/27 16:04:04 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/04/27 16:29:22 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+static char	*ft_joinfree(char *buffer, char *buf)
+{
+	char	*temp;
+
+	temp = ft_strjoin(buffer, buf);
+	free(buffer);
+	return (temp);
+}
 
 static char	*ft_nextline(char *buffer)
 {
@@ -75,7 +84,7 @@ char	*read_file(int fd, char *res)
 			return (NULL);
 		}
 		buffer[bytes_read] = 0;
-		res = ft_strjoin(res, buffer);
+		res = ft_joinfree(res, buffer);
 		if (ft_strchr(buffer, '\n'))
 			break ;
 	}
@@ -97,7 +106,7 @@ char	*get_next_line(int fd)
 	buffer = ft_nextline(buffer);
 	return (line);
 }
-/*
+
 int	main(int argc, char **argv)
 {
 	int		fd;
@@ -106,7 +115,7 @@ int	main(int argc, char **argv)
 
 	a = 0;
 	fd = open("test2", O_RDONLY);
-	while (a < 1600)
+	while (a < 1000)
 	{
 		s = get_next_line(fd);
 		printf("%s", s);
@@ -114,4 +123,3 @@ int	main(int argc, char **argv)
 	}
 	close(fd);
 }
-*/

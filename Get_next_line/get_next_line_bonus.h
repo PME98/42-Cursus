@@ -6,21 +6,19 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 11:24:24 by cagonzal          #+#    #+#             */
-/*   Updated: 2022/04/27 16:02:14 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/04/27 16:06:17 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_BONUS_H
 # define GET_NEXT_LINE_BONUS_H
 
-# include <unistd.h>
-# include <stdio.h>
-# include <stddef.h>
+# include <limits.h>
 # include <stdlib.h>
 # include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include <limits.h>
+# include <sys/uio.h>
+# include <unistd.h>
+# include <stdio.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1

@@ -6,13 +6,22 @@
 /*   By: pedmurie@student.42madrid.com <pedmurie    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 11:20:52 by cagonzal          #+#    #+#             */
-/*   Updated: 2022/04/27 16:03:57 by pedmurie@st      ###   ########.fr       */
+/*   Updated: 2022/04/27 16:08:17 by pedmurie@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-static char	*ft_nextline(char *buffer)
+char	*ft_joinfree(char *buffer, char *buf)
+{
+	char	*temp;
+
+	temp = ft_strjoin(buffer, buf);
+	free(buffer);
+	return (temp);
+}
+
+char	*ft_nextline(char *buffer)
 {
 	int		i;
 	int		j;
@@ -35,7 +44,7 @@ static char	*ft_nextline(char *buffer)
 	return (line);
 }
 
-static char	*ft_line(char *buffer)
+char	*ft_line(char *buffer)
 {
 	char	*line;
 	int		i;
@@ -60,22 +69,22 @@ static char	*ft_line(char *buffer)
 char	*read_file(int fd, char *res)
 {
 	char	*buffer;
-	int		bytes_read;
+	int		byte_read;
 
 	if (!res)
 		res = ft_calloc(1, 1);
 	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
-	bytes_read = 1;
-	while (bytes_read > 0)
+	byte_read = 1;
+	while (byte_read > 0)
 	{
-		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		if (bytes_read == -1)
+		byte_read = read(fd, buffer, BUFFER_SIZE);
+		if (byte_read == -1)
 		{
 			free(buffer);
 			return (NULL);
 		}
-		buffer[bytes_read] = 0;
-		res = ft_strjoin(res, buffer);
+		buffer[byte_read] = 0;
+		res = ft_joinfree(res, buffer);
 		if (ft_strchr(buffer, '\n'))
 			break ;
 	}
@@ -97,22 +106,3 @@ char	*get_next_line(int fd)
 	buffer[fd] = ft_nextline(buffer[fd]);
 	return (line);
 }
-/*
-int	main(int argc, char **argv)
-{
-	int		fd;
-	char	*s;
-	int		fd2;
-
-	fd = open("test2", O_RDONLY);
-	fd2 = open("test1", O_RDONLY);
-	s = get_next_line(fd);
-	printf("%s", s);
-	s = get_next_line(fd2);
-	printf("%s", s);
-	s = get_next_line(fd);
-	printf("%s", s);
-	close(fd);
-	close(fd2);
-}
-*/
